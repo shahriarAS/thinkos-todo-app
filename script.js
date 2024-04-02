@@ -25,12 +25,12 @@ const populateTodoContainer = () => {
                 todo.id +
                 ')" type="checkbox" class="scale-125 cursor-pointer" />'
           }
-            <div class="${todo.completed ? "opacity-30" : ""}">
-              <p class="${
+            <form onfocusout="editTodo(${todo.id})" onSubmit="editTodo(${todo.id})" class="${todo.completed ? "opacity-30" : ""}">
+              <input id="todo-edit-text" type="text" value="${todo.text}" class="${
                 todo.completed ? "line-through text-gray-500" : ""
-              }">${todo.text}</p>
-              <p class="text-xs text-gray-500">${todo.note}</p>
-            </div>
+              }"/>
+              <input id="todo-edit-note" placeholder="N/A" value="${todo.note}" class="text-xs text-gray-500 block"/>
+            </form>
             </div>
             <img onClick="deleteTodo(${
               todo.id
@@ -56,6 +56,14 @@ const deleteTodo = (id) => {
   todos = todos.filter((todo) => todo.id != id);
   populateTodoContainer();
 };
+
+const editTodo = (id) => {
+  event.preventDefault()
+  const todoEditText = document.getElementById("todo-edit-text");
+  const todoEditNote = document.getElementById("todo-edit-note");
+  todos = todos.map(todo => todo.id == id ? {...todo, text: todoEditText.value, note: todoEditNote.value} : todo)
+  populateTodoContainer();
+}
 
 todoForm.onsubmit = (e) => {
   e.preventDefault();
