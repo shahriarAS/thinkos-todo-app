@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="bg-gray-500 h-[15vh] md:h-[30vh]"></div>
+    <main
+      class="w-full absolute top-10 md:top-40 flex flex-col items-center px-4"
+    >
+      <div
+        class="bg-white py-5 rounded-md text-center text-gray-700 w-full md:w-1/4"
+      >
+        <h1 class="text-2xl font-base center">ToDo List</h1>
+        <div
+          id="todo-form-show"
+          draggable="true"
+          class="item mt-4 border-t p-3 px-8 w-full flex justify-center items-center cursor-pointer bg-white text-center text-gray-400 gap-x-2"
+        >
+          <p class="">+</p>
+          <p>Add Todo</p>
+        </div>
+        <div class="list flex flex-col text-left" id="todo-container"></div>
+      </div>
+    </main>
+    <form
+      class="absolute top-0 bg-gray-800/40 w-full h-full rounded-md hidden items-center justify-center"
+      id="todo-form"
+    >
+      <div
+        class="border bg-white p-8 md:w-1/5 flex rounded-md flex-col gap-y-4 items-center"
+        id="todo-form-inner"
+      >
+        <input
+          type="text"
+          class="p-1 px-2 border rounded w-full"
+          placeholder="Text"
+          id="todo-input-text"
+          required
+        />
+        <input
+          type="text"
+          class="p-1 px-2 border rounded w-full"
+          placeholder="Note"
+          id="todo-input-note"
+        />
+        <div class="flex gap-x-4">
+          <button
+            id="todo-form-cancel"
+            class="p-1 px-4 cursor-pointer border rounded w-28"
+          >
+            Cancel
+          </button>
+          <input
+            type="submit"
+            class="p-1 px-4 cursor-pointer border rounded w-28"
+            value="Add Todo"
+          />
+        </div>
+      </div>
+    </form>
+    <script src="./script.js"></script>
+  </body>
+</html>
